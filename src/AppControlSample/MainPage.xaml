@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c:CirclePage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:c="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms"
+              xmlns:models="clr-namespace:AppControlSample;"
+              xmlns:converters="clr-namespace:AppControlSample;"
+              x:Class="AppControlSample.MainPage"
+              RotaryFocusObject="{x:Reference MyScrollView}">
+    <c:CirclePage.BindingContext>
+        <models:MainPageModel />
+    </c:CirclePage.BindingContext>
+    <c:CirclePage.Resources>
+        <ResourceDictionary>
+            <converters:NegativeConverter x:Key="NegativeConverter" />
+        </ResourceDictionary>
+    </c:CirclePage.Resources>
+    <c:CirclePage.Content>
+        <c:CircleScrollView x:Name="MyScrollView" Orientation="Vertical">
+            <StackLayout Padding="30" Spacing="10">
+                <Label Text="{Binding Mylabel}"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand" />
+                <Button x:Name="btnStartLocation" Text="Start LocationService"
+                        IsEnabled="{Binding LocationServiceEnabled, Converter={StaticResource NegativeConverter}}"
+                        Command="{Binding StartLocationService}" />
+                <Button x:Name="btnStopLocation" Text="Stop LocationService"
+                        IsEnabled="{Binding LocationServiceEnabled}"
+                        Command="{Binding StopLocationService}" />
+                <!--<Button Text="Start SensorService"
+                        IsEnabled="{Binding SensorServiceEnabled, Converter={StaticResource NegativeConverter}}"
+                        Command="{Binding StartSensorService}"/>
+                <Button Text="Stop SensorService"
+                        IsEnabled="{Binding SensorServiceEnabled}"
+                        Command="{Binding StopSensorService}"/>-->
+            </StackLayout>
+        </c:CircleScrollView>
+    </c:CirclePage.Content>
+</c:CirclePage>

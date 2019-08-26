@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest package="org.tizen.example.MyService" version="1.0.0" api-version="4" xmlns="http://tizen.org/ns/packages">
+  <profile name="common" />
+  <service-application appid="org.tizen.example.MyService" exec="MyService.dll" multiple="false" nodisplay="true" taskmanage="false" type="dotnet">
+    <label>MyService</label>
+    <icon>MyService.png</icon>
+    <background-category value="sensor" />
+    <background-category value="location"/>
+    <splash-screens />
+  </service-application>
+  <shortcut-list />
+  <privileges>
+    <privilege>http://tizen.org/privilege/location</privilege>
+    <privilege>http://tizen.org/privilege/healthinfo</privilege>
+    <privilege>http://tizen.org/privilege/datasharing</privilege>
+  </privileges>
+  <provides-appdefined-privileges />
+</manifest>
